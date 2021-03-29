@@ -1,8 +1,8 @@
-
+""" Abstract Task """
 
 
 class Task:
-    """
+    """Abstract base class for all tasks.
 
     """
 

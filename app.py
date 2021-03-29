@@ -15,7 +15,7 @@ TYPE = { 'ContentType':'application/json' }
 
 
 def _success_response():
-    """
+    """Returns a default response indicating successful task submission.
 
     """
     return json.dumps(TEXT), CODE, TYPE
