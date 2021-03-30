@@ -2,9 +2,10 @@ import json
 
 from flask import Flask
 
-from queue import EventQueue
+from event_queue import EventQueue
 from tasks import LightsOnTask
 from tasks import LightsOffTask
+from tasks import QueryOpenWeatherMapApiTaskMedellin
 
 app = Flask(__name__)
 queue = EventQueue()
@@ -31,5 +32,12 @@ def lights_on():
 @app.route('/lights_off')
 def lights_off():
     task = LightsOffTask()
+    queue.enqueue(task)
+    return _success_response()
+
+
+@app.route('/query_weather_medellin')
+def query_weather_medellin():
+    task = QueryOpenWeatherMapApiTaskMedellin()
     queue.enqueue(task)
     return _success_response()
